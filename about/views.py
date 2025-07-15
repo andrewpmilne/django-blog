@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import AboutSection
 from .forms import CollaborateForm
@@ -11,7 +11,7 @@ def get_about(request):
         if collaborate_form.is_valid():
             collaborate_form.save()
             messages.success(request, "Your collaboration request has been submitted!")
-            return redirect("about")  # Redirect after POST to prevent duplicate submissions
+            return redirect("about:about")  # Redirect after POST to prevent duplicate submissions
     else:
         collaborate_form = CollaborateForm()
 
